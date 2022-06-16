@@ -2,9 +2,9 @@
 # Copyright 2022 GlitchyByte
 # SPDX-License-Identifier: MIT-0
 
-# Install OpenJDK 18 on macOS AArch64.
+# Install OpenJDK 18 on macOS x64.
 
-jdkUrl="https://download.java.net/java/GA/jdk18.0.1.1/65ae32619e2f40f3a9af3af1851d6e19/2/GPL/openjdk-18.0.1.1_macos-aarch64_bin.tar.gz"
+jdkUrl="https://download.java.net/java/GA/jdk18.0.1.1/65ae32619e2f40f3a9af3af1851d6e19/2/GPL/openjdk-18.0.1.1_macos-x64_bin.tar.gz"
 jdkDestDir="${HOME}/Library/Java/JavaVirtualMachines"
 envScript="${HOME}/.zshenv"
 javaHomeLine="export JAVA_HOME=\$(/usr/libexec/java_home)"
