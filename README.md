@@ -1,4 +1,5 @@
 # OpenJDK installation scripts
+![OpenJDK](https://img.shields.io/badge/OpenJDK-18-orange)
 
 Scripts to install [OpenJDK](https://jdk.java.net) on different platforms.
 
@@ -7,6 +8,9 @@ Platforms supported:
 - macOS
     - AArch64
     - x64
+- Ubuntu (No script needed. Read below.)
+
+Scripts are idempotent. That is, you can run them repeatedly and no harm will be done to your system, regardless of any error messages showing.
 
 ---
 ## Install
@@ -29,3 +33,14 @@ On macOS-AArch64:
 On macOS-x64:
 
     curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install-scripts/main/jdk.18/install-openjdk-18-macos-x64 | sh
+
+---
+## How about Linux?
+
+I use mostly [Ubuntu](https://ubuntu.com). No script needed. There you can do this:
+
+    sudo apt install openjdk-18-jdk
+
+Or if you are in a headless environment:
+
+    sudo apt install openjdk-18-jdk-headless
