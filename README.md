@@ -27,10 +27,10 @@ In fact, you could use the above distributions on many platforms. But I prefer a
 
 For macOS I have my own script. Super easy to use, no root needed, and idempotent (you can ignore errors). Run the following on a terminal.
 
-For macOS-AArch64:
+For macOS-AArch64 (M1 and M2):
 
     curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install-scripts/main/jdk.20/install-openjdk-20-macos-aarch64 | sh
 
-For macOS-x64:
+For macOS-x64 (Intel):
 
     curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install-scripts/main/jdk.20/install-openjdk-20-macos-x64 | sh
