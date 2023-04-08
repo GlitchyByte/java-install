@@ -1,10 +1,10 @@
 #!/bin/sh
-# Copyright 2022 GlitchyByte
+# Copyright 2022-2023 GlitchyByte
 # SPDX-License-Identifier: MIT-0
 
 # Install OpenJDK 19 on macOS x64.
 
-jdkUrl="https://download.java.net/java/GA/jdk19.0.1/afdd2e245b014143b62ccb916125e3ce/10/GPL/openjdk-19.0.1_macos-x64_bin.tar.gz"
+jdkUrl="https://download.java.net/java/GA/jdk19.0.2/fdb695a9d9064ad6b064dc6df578380c/7/GPL/openjdk-19.0.2_macos-x64_bin.tar.gz"
 jdkDestDir="${HOME}/Library/Java/JavaVirtualMachines"
 envScript="${HOME}/.zshenv"
 javaHomeLine="export JAVA_HOME=\$(/usr/libexec/java_home)"
