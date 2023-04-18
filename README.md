@@ -29,8 +29,8 @@ For macOS I have my own script. Super easy to use, no root needed, and idempoten
 
 For macOS-AArch64 (M1 and M2):
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install-scripts/main/jdk.19/install-openjdk-19-macos-aarch64 | sh
+    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install-scripts/main/jdk.19/macos-aarch64 | bash
 
 For macOS-x64 (Intel):
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install-scripts/main/jdk.19/install-openjdk-19-macos-x64 | sh
+    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install-scripts/main/jdk.19/macos-x64 | bash

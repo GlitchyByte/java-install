@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Copyright 2022-2023 GlitchyByte
 # SPDX-License-Identifier: MIT-0
 
-# Install OpenJDK 20 on macOS AArch64.
+# Install OpenJDK 18 on macOS AArch64.
 
-jdkUrl="https://download.java.net/java/GA/jdk20/bdc68b4b9cbc4ebcb30745c85038d91d/36/GPL/openjdk-20_macos-aarch64_bin.tar.gz"
+jdkUrl="https://download.java.net/java/GA/jdk18.0.2/f6ad4b4450fd4d298113270ec84f30ee/9/GPL/openjdk-18.0.2_macos-aarch64_bin.tar.gz"
 jdkDestDir="${HOME}/Library/Java/JavaVirtualMachines"
 envScript="${HOME}/.zshenv"
 javaHomeLine="export JAVA_HOME=\$(/usr/libexec/java_home)"
@@ -24,15 +24,15 @@ c_error="${c_bold}${c_red}"
 
 # Create Java directory in Library.
 echo "${c_command}mkdir -p${c_reset} ${c_command_var}${jdkDestDir}${c_reset}"
-mkdir -p ${jdkDestDir}
+mkdir -p "${jdkDestDir}"
 
 # Download and untar.
 echo "${c_command}curl -s${c_reset} ${c_command_var}${jdkUrl}${c_reset} ${c_command}| tar -xC${c_reset} ${c_command_var}${tempDir}${c_reset}"
-curl -s ${jdkUrl} | tar -xC ${tempDir}
+curl -s ${jdkUrl} | tar -xC "${tempDir}"
 
 # Move JDK to Library.
 echo "${c_command}mv${c_reset} ${c_command_var}${tempDir}/* ${jdkDestDir}/${c_reset}"
-mv ${tempDir}/* ${jdkDestDir}/
+mv "${tempDir}/*" "${jdkDestDir}/"
 
 # Add JAVA_HOME.
 if test ! -f "${envScript}"; then
@@ -48,6 +48,6 @@ if test "${grepResult}" -eq 0; then
     exit 0
 fi
 # Not found. Let's add it.
-echo "${javaHomeLine}" >> ${envScript}
-echo >> ${envScript}
+echo "${javaHomeLine}" >> "${envScript}"
+echo >> "${envScript}"
 echo "${c_message}Make sure to close and reopen this terminal.${c_reset}"
