@@ -46,6 +46,7 @@ fi
 if test "${grepResult}" != 0; then
     # Not found. Let's add it.
     echo "${javaHomeLine}" >> "${envScript}"
+    echo >> "${envScript}"
 fi
 
 echo "${c_message}Make sure to close and reopen this terminal.${c_reset}"
