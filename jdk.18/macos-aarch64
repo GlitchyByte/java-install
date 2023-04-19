@@ -43,11 +43,10 @@ if test "${grepResult}" -ge 2; then
     echo "${c_error}Error adding JAVA_HOME.${c_reset}"
     exit 1
 fi
-if test "${grepResult}" -eq 0; then
-    # Already there!
-    exit 0
+if test "${grepResult}" != 0; then
+    # Not found. Let's add it.
+    echo "${javaHomeLine}" >> "${envScript}"
 fi
-# Not found. Let's add it.
-echo "${javaHomeLine}" >> "${envScript}"
-echo >> "${envScript}"
+
 echo "${c_message}Make sure to close and reopen this terminal.${c_reset}"
+exit 0
