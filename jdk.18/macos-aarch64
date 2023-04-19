@@ -3,8 +3,8 @@
 # SPDX-License-Identifier: MIT-0
 
 # Install OpenJDK 18 on macOS AArch64.
-
 jdkUrl="https://download.java.net/java/GA/jdk18.0.2/f6ad4b4450fd4d298113270ec84f30ee/9/GPL/openjdk-18.0.2_macos-aarch64_bin.tar.gz"
+
 jdkDestDir="${HOME}/Library/Java/JavaVirtualMachines"
 envScript="${HOME}/.zshenv"
 javaHomeLine="export JAVA_HOME=\$(/usr/libexec/java_home)"
@@ -28,13 +28,13 @@ mkdir -p "${jdkDestDir}"
 
 # Download and untar.
 echo "${c_command}curl -s${c_reset} ${c_command_var}${jdkUrl}${c_reset} ${c_command}| tar -xC${c_reset} ${c_command_var}${tempDir}${c_reset}"
-curl -s ${jdkUrl} | tar -xC "${tempDir}"
+curl -s "${jdkUrl}" | tar -xC "${tempDir}"
 
 # Move JDK to Library.
 echo "${c_command}mv${c_reset} ${c_command_var}${tempDir}/* ${jdkDestDir}/${c_reset}"
-mv "${tempDir}/*" "${jdkDestDir}/"
+mv "${tempDir}/"* "${jdkDestDir}/"
 
-# Add JAVA_HOME.
+# Add JAVA_HOME to zshenv.
 if test ! -f "${envScript}"; then
     touch "${envScript}"
 fi
