@@ -3,36 +3,90 @@
 # SPDX-License-Identifier: MIT-0
 
 # Creates individual macOS scripts.
+set -e # Exit if any command returns an error.
+set -u # Exit with an error if a variable is used without being set.
 
+# Script count.
 count=0
 
-filenames[${count}]="jdk.19/macos-aarch64"
-descriptions[${count}]="OpenJDK 19 on macOS AArch64"
-urls[${count}]="https://download.java.net/java/GA/jdk19.0.2/fdb695a9d9064ad6b064dc6df578380c/7/GPL/openjdk-19.0.2_macos-aarch64_bin.tar.gz"
+# Version 20
+version="20"
+
+################################
+# Oracle JDK.
+
+# macOs
+osNames[${count}]="macos"
+binNames[${count}]="java"
+jdkNames[${count}]="jdk-${version}"
+archNames[${count}]="x64"
 ((++count))
 
-filenames[${count}]="jdk.19/macos-x64"
-descriptions[${count}]="OpenJDK 19 on macOS x64"
-urls[${count}]="https://download.java.net/java/GA/jdk19.0.2/fdb695a9d9064ad6b064dc6df578380c/7/GPL/openjdk-19.0.2_macos-x64_bin.tar.gz"
+osNames[${count}]="macos"
+binNames[${count}]="java"
+jdkNames[${count}]="jdk-${version}"
+archNames[${count}]="aarch64"
 ((++count))
 
-filenames[${count}]="jdk.20/macos-aarch64"
-descriptions[${count}]="OpenJDK 20 on macOS AArch64"
-urls[${count}]="https://download.java.net/java/GA/jdk20.0.2/6e380f22cbe7469fa75fb448bd903d8e/9/GPL/openjdk-20.0.2_macos-aarch64_bin.tar.gz"
+# Linux
+osNames[${count}]="linux"
+binNames[${count}]="java"
+jdkNames[${count}]="jdk-${version}"
+archNames[${count}]="x64"
 ((++count))
 
-filenames[${count}]="jdk.20/macos-x64"
-descriptions[${count}]="OpenJDK 20 on macOS x64"
-urls[${count}]="https://download.java.net/java/GA/jdk20.0.2/6e380f22cbe7469fa75fb448bd903d8e/9/GPL/openjdk-20.0.2_macos-x64_bin.tar.gz"
+osNames[${count}]="linux"
+binNames[${count}]="java"
+jdkNames[${count}]="jdk-${version}"
+archNames[${count}]="aarch64"
 ((++count))
 
-scriptDescriptionTag="%SCRIPT_DESCRIPTION%"
-jdkUrlTag="%JDK_URL%"
-templateScript="template.macos.script"
+################################
+# GraalVM JDK.
+
+# macOs
+osNames[${count}]="macos"
+binNames[${count}]="graalvm"
+jdkNames[${count}]="graalvm-jdk-${version}"
+archNames[${count}]="x64"
+((++count))
+
+osNames[${count}]="macos"
+binNames[${count}]="graalvm"
+jdkNames[${count}]="graalvm-jdk-${version}"
+archNames[${count}]="aarch64"
+((++count))
+
+# Linux
+osNames[${count}]="linux"
+binNames[${count}]="graalvm"
+jdkNames[${count}]="graalvm-jdk-${version}"
+archNames[${count}]="x64"
+((++count))
+
+osNames[${count}]="linux"
+binNames[${count}]="graalvm"
+jdkNames[${count}]="graalvm-jdk-${version}"
+archNames[${count}]="aarch64"
+((++count))
+
+# Generate scripts.
+readonly scriptDescriptionTag="%SCRIPT_DESCRIPTION%"
+readonly jdkUrlTag="%JDK_URL%"
+readonly jdkNameTag="%JDK_NAME%"
 for ((i=0; i < ${count}; ++i))
 do
-    filename="${filenames[${i}]}"
-    description="${descriptions[${i}]}"
-    url="${urls[${i}]}"
-    sed -e "s|${scriptDescriptionTag}|${description}|g" -e "s|${jdkUrlTag}|${url}|g" "${templateScript}" > "${filename}"
+    osName="${osNames[${i}]}"
+    binName="${binNames[${i}]}"
+    jdkName="${jdkNames[${i}]}"
+    archName="${archNames[${i}]}"
+    mkdir -p "${jdkName}"
+    scriptName="${jdkName}/${osName}-${archName}"
+    description="${binName} ${osName} ${archName}"
+    url="https://download.oracle.com/${binName}/${version}/latest/${jdkName}_${osName}-${archName}_bin.tar.gz"
+    templateScript="template-${osName}-script"
+    sed -e "s|${scriptDescriptionTag}|${description}|g" \
+        -e "s|${jdkUrlTag}|${url}|g" \
+        -e "s|${jdkNameTag}|${jdkName}|g" \
+        "${templateScript}" > "${scriptName}"
 done
