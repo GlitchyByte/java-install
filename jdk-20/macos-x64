@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Copyright 2022-2023 GlitchyByte
+# SPDX-License-Identifier: MIT-0
+
+# Install java macos x64.
+set -u # Exit with an error if a variable is used without being set.
+
+readonly jdkUrl="https://download.oracle.com/java/20/latest/jdk-20_macos-x64_bin.tar.gz"
+readonly jdkDestDir="${HOME}/Library/Java/JavaVirtualMachines"
+readonly envScript="${HOME}/.zshenv"
+readonly javaHomeLine="export JAVA_HOME=\$(/usr/libexec/java_home)"
+
+# Colors.
+readonly c_reset=$(tput sgr0)
+readonly c_bold=$(tput bold)
+readonly cf_red=$(tput setaf 1)
+readonly cf_green=$(tput setaf 2)
+readonly cf_yellow=$(tput setaf 3)
+readonly cf_white=$(tput setaf 7)
+readonly cc_command="${cf_yellow}"
+readonly cc_command_var="${c_bold}${cf_yellow}"
+readonly cc_message="${c_bold}${cf_white}"
+readonly cc_success="${c_bold}${cf_green}"
+readonly cc_error="${c_bold}${cf_red}"
+
+# Create Java directory in Library.
+echo "${cc_command}mkdir -p${c_reset} ${cc_command_var}${jdkDestDir}${c_reset}"
+mkdir -p "${jdkDestDir}"
+
+# Download and untar into Library.
+echo "${cc_command}curl -s${c_reset} ${cc_command_var}${jdkUrl}${c_reset} ${cc_command}| tar -xC${c_reset} ${cc_command_var}${jdkDestDir}${c_reset}"
+curl -s "${jdkUrl}" | tar -xzC "${jdkDestDir}"
+
+# Add JAVA_HOME to .zshenv.
+if test ! -f "${envScript}"; then
+    touch "${envScript}"
+fi
+grepResult=$(grep -qF "${javaHomeLine}" "${envScript}" ; echo $?)
+if test "${grepResult}" -ge 2; then
+    echo "${cc_error}Error adding JAVA_HOME.${c_reset}"
+    exit 1
+fi
+if test "${grepResult}" != 0; then
+    # Not found. Let's add it.
+    echo "${javaHomeLine}" >> "${envScript}"
+    echo >> "${envScript}"
+    echo "${cc_message}JAVA_HOME added to '.zshenv'.${c_reset}"
+fi
+
+echo "${cc_success}Make sure to close and reopen this terminal.${c_reset}"
