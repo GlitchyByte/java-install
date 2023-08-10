@@ -1,36 +1,52 @@
-# OpenJDK installation
+# JDK and GraalVM JDK installation
 
-![OpenJDK](https://img.shields.io/badge/OpenJDK-20-orange)
-
-Instructions to install [OpenJDK](https://jdk.java.net) on different platforms.
+![JDK](https://img.shields.io/badge/JDK-20-orange) ![GraalVM JDK](https://img.shields.io/badge/GraalVM_JDK-20-orange)
 
 ---
-## Ubuntu Linux
+## General
 
-On [Ubuntu](https://ubuntu.com) just do:
+The following are one liners to install JDK or GraalVM JDK. They will download, decompress, place it in the right directory, and update your shell environment variable. **No root needed.**
 
-    sudo apt install openjdk-20-jdk
-
-Or if you are in a headless environment:
-
-    sudo apt install openjdk-20-jdk-headless
+You can always go to the [offical page](https://img.shields.io/badge/GraalVM_JDK-20-orange) and download things yourself if you know what you are doing. If you are using Windows or would like a point-and-click installer, also check the official page.
 
 ---
-## Windows
-
-On Windows you can use [Eclipse Temurin](https://adoptium.net/temurin/releases/?version=20) at https://adoptium.net/temurin/releases/?version=20
-
-In fact, you could use the above distributions on many platforms. But I prefer a manual direct installation for macOS.
-
----
-## macOS
-
-For macOS I have my own script. Super easy to use, no root needed, and idempotent (you can ignore errors). Run the following on a terminal.
+## macOS JDK
 
 For macOS-AArch64 (M1 and M2):
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/jdk.20/macos-aarch64 | bash
+    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/jdk-20/macos-aarch64 | bash
 
 For macOS-x64 (Intel):
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/jdk.20/macos-x64 | bash
+    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/jdk-20/macos-x64 | bash
+
+## macOS GraalVM JDK
+
+For macOS-AArch64 (M1 and M2):
+
+    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/graalvm-jdk-20/macos-aarch64 | bash
+
+For macOS-x64 (Intel):
+
+    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/graalvm-jdk-20/macos-x64 | bash
+
+---
+## Linux JDK
+
+For Linux-AArch64:
+
+    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/jdk-20/linux-aarch64 | bash
+
+For Linux-x64:
+
+    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/jdk-20/linux-x64 | bash
+
+## Linux GraalVM JDK
+
+For Linux-AArch64:
+
+    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/graalvm-jdk-20/linux-aarch64 | bash
+
+For Linux-x64:
+
+    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/graalvm-jdk-20/linux-x64 | bash
