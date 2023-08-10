@@ -8,6 +8,7 @@ set -u # Exit with an error if a variable is used without being set.
 readonly jdkUrl="https://download.oracle.com/graalvm/20/latest/graalvm-jdk-20_linux-x64_bin.tar.gz"
 readonly jdkDestDir="${HOME}/.local/java"
 readonly envScript="${HOME}/.profile"
+readonly javaHomeSearchLine="export JAVA_HOME="
 readonly javaHomeLine="export JAVA_HOME=${jdkDestDir}/graalvm-jdk-20"
 
 # Colors.
@@ -35,7 +36,7 @@ curl -s "${jdkUrl}" | tar -xzC "${jdkDestDir}"
 if test ! -f "${envScript}"; then
     touch "${envScript}"
 fi
-readonly grepResult=$(grep -qF "${javaHomeLine}" "${envScript}" ; echo $?)
+readonly grepResult=$(grep -e "^${javaHomeSearchLine}" "${envScript}" | wc -l)
 if test "${grepResult}" -eq 0; then
     # Not found. Let's add it.
     echo "${javaHomeLine}" >> "${envScript}"
@@ -44,7 +45,7 @@ if test "${grepResult}" -eq 0; then
 fi
 if test "${grepResult}" -eq 1; then
     # There is one. Replace it.
-    sed -i "'s|^export JAVA_HOME=.*|${javaHomeLine}|'" "${envScript}"
+    sed -i "s|^${javaHomeSearchLine}.*|${javaHomeLine}|" "${envScript}"
     echo "${cc_message}JAVA_HOME replaced in '.profile'.${c_reset}"
 fi
 if test "${grepResult}" -ge 2; then

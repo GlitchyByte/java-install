@@ -8,6 +8,7 @@ set -u # Exit with an error if a variable is used without being set.
 readonly jdkUrl="https://download.oracle.com/java/20/latest/jdk-20_macos-aarch64_bin.tar.gz"
 readonly jdkDestDir="${HOME}/Library/Java/JavaVirtualMachines"
 readonly envScript="${HOME}/.zshenv"
+readonly javaHomeSearchLine="export JAVA_HOME="
 readonly javaHomeLine="export JAVA_HOME=\$(/usr/libexec/java_home)"
 
 # Colors.
@@ -35,7 +36,7 @@ curl -s "${jdkUrl}" | tar -xzC "${jdkDestDir}"
 if test ! -f "${envScript}"; then
     touch "${envScript}"
 fi
-readonly grepResult=$(grep -qF "${javaHomeLine}" "${envScript}" ; echo $?)
+readonly grepResult=$(grep -e "^${javaHomeSearchLine}" "${envScript}" | wc -l)
 if test "${grepResult}" -eq 0; then
     # Not found. Let's add it.
     echo "${javaHomeLine}" >> "${envScript}"
