@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Copyright 2023 GlitchyByte
+# SPDX-License-Identifier: MIT-0
+
+# Creates individual scripts.
+set -e # Exit if any command returns an error.
+set -u # Exit with an error if a variable is used without being set.
+
+# Version.
+version="20"
+
+# Generate scripts.
+readonly scriptDescriptionTag="%SCRIPT_DESCRIPTION%"
+readonly jdkUrlTag="%JDK_URL%"
+readonly jdkNameTag="%JDK_NAME%"
+for osName in "macos" "linux"; do
+    for binName in "java" "graalvm"; do
+        case "${binName}" in
+            "java")
+                jdkName="jdk-${version}"
+                ;;
+            "graalvm")
+                jdkName="graalvm-jdk-${version}"
+                ;;
+            *)
+                echo "Wrong binName: ${binName}"
+                exit 1
+                ;;
+        esac
+        mkdir -p "${jdkName}"
+        for archName in "x64" "aarch64"; do
+            scriptName="${jdkName}/${osName}-${archName}"
+            echo "Creating: ${scriptName}"
+            description="${binName} ${osName} ${archName}"
+            url="https://download.oracle.com/${binName}/${version}/latest/${jdkName}_${osName}-${archName}_bin.tar.gz"
+            templateScript="template-${osName}-script"
+            sed -e "s|${scriptDescriptionTag}|${description}|g" \
+                -e "s|${jdkUrlTag}|${url}|g" \
+                -e "s|${jdkNameTag}|${jdkName}|g" \
+                "${templateScript}" > "${scriptName}"
+        done
+    done
+done
