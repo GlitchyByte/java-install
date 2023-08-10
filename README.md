@@ -14,39 +14,39 @@ You can always go to the [offical page](https://www.oracle.com/java/technologies
 
 For macOS-AArch64 (M1 and M2):
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/jdk-20/macos-aarch64 | bash
+    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/jdk-20/macos-aarch64 | bash
 
 For macOS-x64 (Intel):
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/jdk-20/macos-x64 | bash
+    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/jdk-20/macos-x64 | bash
 
 ## macOS GraalVM JDK
 
 For macOS-AArch64 (M1 and M2):
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/graalvm-jdk-20/macos-aarch64 | bash
+    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/graalvm-jdk-20/macos-aarch64 | bash
 
 For macOS-x64 (Intel):
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/graalvm-jdk-20/macos-x64 | bash
+    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/graalvm-jdk-20/macos-x64 | bash
 
 ---
 ## Linux JDK
 
 For Linux-AArch64:
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/jdk-20/linux-aarch64 | bash
+    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/jdk-20/linux-aarch64 | bash
 
 For Linux-x64:
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/jdk-20/linux-x64 | bash
+    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/jdk-20/linux-x64 | bash
 
 ## Linux GraalVM JDK
 
 For Linux-AArch64:
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/graalvm-jdk-20/linux-aarch64 | bash
+    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/graalvm-jdk-20/linux-aarch64 | bash
 
 For Linux-x64:
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/openjdk-install/main/graalvm-jdk-20/linux-x64 | bash
+    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/graalvm-jdk-20/linux-x64 | bash
