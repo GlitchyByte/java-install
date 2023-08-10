@@ -7,7 +7,7 @@
 
 The following are one liners to install JDK or GraalVM JDK. They will download, decompress, place it in the right directory, and update your shell environment variable. **No root needed.**
 
-You can always go to the [offical page](https://img.shields.io/badge/GraalVM_JDK-20-orange) and download things yourself if you know what you are doing. If you are using Windows or would like a point-and-click installer, also check the official page.
+You can always go to the [offical page](https://www.oracle.com/java/technologies/downloads/) and download things yourself if you know what you are doing. If you are using Windows or would like a point-and-click installer, also check the official page.
 
 ---
 ## macOS JDK
