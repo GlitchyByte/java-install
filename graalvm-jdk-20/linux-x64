@@ -29,7 +29,7 @@ echo "${cc_command}mkdir -p${c_reset} ${cc_command_var}${jdkDestDir}${c_reset}"
 mkdir -p "${jdkDestDir}"
 
 # Download and untar into .local.
-echo "${cc_command}curl -s${c_reset} ${cc_command_var}${jdkUrl}${c_reset} ${cc_command}| tar -xC${c_reset} ${cc_command_var}${jdkDestDir}${c_reset}"
+echo "${cc_command}curl -s${c_reset} ${cc_command_var}${jdkUrl}${c_reset} ${cc_command}| tar -xzC${c_reset} ${cc_command_var}${jdkDestDir}${c_reset}"
 curl -s "${jdkUrl}" | tar -xzC "${jdkDestDir}"
 
 # Add JAVA_HOME to .profile.
