@@ -2,10 +2,10 @@
 # Copyright 2022-2023 GlitchyByte
 # SPDX-License-Identifier: MIT-0
 
-# Install java macos x64.
+# Install graalvm macos x64.
 set -u # Exit with an error if a variable is used without being set.
 
-readonly jdkUrl="https://download.oracle.com/java/20/latest/jdk-20_macos-x64_bin.tar.gz"
+readonly jdkUrl="https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_macos-x64_bin.tar.gz"
 readonly jdkDestDir="${HOME}/Library/Java/JavaVirtualMachines"
 readonly envScript="${HOME}/.zshenv"
 readonly javaHomeSearchLine="export JAVA_HOME="

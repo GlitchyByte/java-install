@@ -1,15 +1,15 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 # Copyright 2022-2023 GlitchyByte
 # SPDX-License-Identifier: MIT-0
 
-# Install java macos x64.
+# Install java linux x64.
 set -u # Exit with an error if a variable is used without being set.
 
-readonly jdkUrl="https://download.oracle.com/java/20/latest/jdk-20_macos-x64_bin.tar.gz"
-readonly jdkDestDir="${HOME}/Library/Java/JavaVirtualMachines"
-readonly envScript="${HOME}/.zshenv"
+readonly jdkUrl="https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz"
+readonly jdkDestDir="${HOME}/.local/java"
+readonly envScript="${HOME}/.profile"
 readonly javaHomeSearchLine="export JAVA_HOME="
-readonly javaHomeLine="export JAVA_HOME=\$(/usr/libexec/java_home)"
+readonly javaHomeLine="export JAVA_HOME=${jdkDestDir}/jdk-17"
 
 # Colors.
 readonly c_reset=$(tput sgr0)
@@ -21,13 +21,13 @@ readonly cc_message="${c_bold}${cf_white}"
 readonly cc_success="${c_bold}${cf_green}"
 readonly cc_error="${c_bold}${cf_red}"
 
-# Create Java directory in Library.
+# Create Java directory in .local.
 mkdir -p "${jdkDestDir}"
 
-# Download and untar into Library.
+# Download and untar into .local.
 curl -s "${jdkUrl}" | tar -xzC "${jdkDestDir}"
 
-# Add JAVA_HOME to .zshenv.
+# Add JAVA_HOME to .profile.
 if test ! -f "${envScript}"; then
     touch "${envScript}"
 fi
@@ -36,7 +36,12 @@ if test "${grepResult}" -eq 0; then
     # Not found. Let's add it.
     echo "${javaHomeLine}" >> "${envScript}"
     echo >> "${envScript}"
-    echo "${cc_message}JAVA_HOME added to '.zshenv'.${c_reset}"
+    echo "${cc_message}JAVA_HOME added to '.profile'.${c_reset}"
+fi
+if test "${grepResult}" -eq 1; then
+    # There is one. Replace it.
+    sed -i "s|^${javaHomeSearchLine}.*|${javaHomeLine}|" "${envScript}"
+    echo "${cc_message}JAVA_HOME replaced in '.profile'.${c_reset}"
 fi
 if test "${grepResult}" -ge 2; then
     # Nah! Something is wrong.

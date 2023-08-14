@@ -1,52 +1,38 @@
-# JDK and GraalVM JDK installation
+# Java JDK and GraalVM JDK installation
 
-![JDK](https://img.shields.io/badge/JDK-20-orange) ![GraalVM JDK](https://img.shields.io/badge/GraalVM_JDK-20-orange)
+![JDK](https://img.shields.io/badge/JDK-20-orange) ![JDK](https://img.shields.io/badge/JDK-17-orange) ![GraalVM JDK](https://img.shields.io/badge/GraalVM_JDK-20-orange) ![GraalVM JDK](https://img.shields.io/badge/GraalVM_JDK-17-orange)
 
----
-## General
+The following are one-liners to install JDK or GraalVM JDK. They will download, decompress, place it in the right directory, and update your shell profile with a proper JAVA_HOME environment variable. **No root needed.**
 
-The following are one liners to install JDK or GraalVM JDK. They will download, decompress, place it in the right directory, and update your shell environment variable. **No root needed.**
-
-You can always go to the [offical page](https://www.oracle.com/java/technologies/downloads/) and download things yourself if you know what you are doing. If you are using Windows or would like a point-and-click installer, also check the official page.
+You can always go to the [offical page](https://www.oracle.com/java/technologies/downloads/) and download things yourself if you know what you are doing. If you are using Windows or would like a point-and-click installer, also check the [offical page](https://www.oracle.com/java/technologies/downloads/).
 
 ---
-## macOS JDK
+## Gradle
 
-For macOS-AArch64 (M1 and M2):
+I'm also including a semi-one-liner to start your project with Gradle! After all, if you are installing Java you probably want to create something.
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/jdk-20/macos-aarch64 | bash
+Run this in a newly created directory for your project. The script will download Gradle temporarily, and output another one-liner to initialize your app. That one-liner will also delete the temporary Gradle download. You do not need a global Gradle installation in your system, every project holds its own copy once initialized.
 
-For macOS-x64 (Intel):
-
-    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/jdk-20/macos-x64 | bash
-
-## macOS GraalVM JDK
-
-For macOS-AArch64 (M1 and M2):
-
-    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/graalvm-jdk-20/macos-aarch64 | bash
-
-For macOS-x64 (Intel):
-
-    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/graalvm-jdk-20/macos-x64 | bash
+    curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/gradle/gradle-8.2.1 | bash
 
 ---
-## Linux JDK
+## Get Java!
 
-For Linux-AArch64:
-
-    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/jdk-20/linux-aarch64 | bash
-
-For Linux-x64:
-
-    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/jdk-20/linux-x64 | bash
-
-## Linux GraalVM JDK
-
-For Linux-AArch64:
-
-    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/graalvm-jdk-20/linux-aarch64 | bash
-
-For Linux-x64:
-
-    curl -s https://raw.githubusercontent.com/GlitchyByte/jdk-install/main/graalvm-jdk-20/linux-x64 | bash
+| OS | Arch | JDK | Ver | Command |
+|----|--------------|-----|---------|---------|
+| macos | aarch64 | java | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-20/macos-aarch64 \| zsh` |
+| macos | x64 | java | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-20/macos-x64 \| zsh` |
+| macos | aarch64 | graalvm | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-20/macos-aarch64 \| zsh` |
+| macos | x64 | graalvm | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-20/macos-x64 \| zsh` |
+| linux | aarch64 | java | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-20/linux-aarch64 \| bash` |
+| linux | x64 | java | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-20/linux-x64 \| bash` |
+| linux | aarch64 | graalvm | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-20/linux-aarch64 \| bash` |
+| linux | x64 | graalvm | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-20/linux-x64 \| bash` |
+| macos | aarch64 | java | 17 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-17/macos-aarch64 \| zsh` |
+| macos | x64 | java | 17 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-17/macos-x64 \| zsh` |
+| macos | aarch64 | graalvm | 17 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-17/macos-aarch64 \| zsh` |
+| macos | x64 | graalvm | 17 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-17/macos-x64 \| zsh` |
+| linux | aarch64 | java | 17 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-17/linux-aarch64 \| bash` |
+| linux | x64 | java | 17 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-17/linux-x64 \| bash` |
+| linux | aarch64 | graalvm | 17 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-17/linux-aarch64 \| bash` |
+| linux | x64 | graalvm | 17 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-17/linux-x64 \| bash` |
