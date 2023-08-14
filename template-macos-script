@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 # Copyright 2022-2023 GlitchyByte
 # SPDX-License-Identifier: MIT-0
 
@@ -16,20 +16,15 @@ readonly c_reset=$(tput sgr0)
 readonly c_bold=$(tput bold)
 readonly cf_red=$(tput setaf 1)
 readonly cf_green=$(tput setaf 2)
-readonly cf_yellow=$(tput setaf 3)
 readonly cf_white=$(tput setaf 7)
-readonly cc_command="${cf_yellow}"
-readonly cc_command_var="${c_bold}${cf_yellow}"
 readonly cc_message="${c_bold}${cf_white}"
 readonly cc_success="${c_bold}${cf_green}"
 readonly cc_error="${c_bold}${cf_red}"
 
 # Create Java directory in Library.
-echo "${cc_command}mkdir -p${c_reset} ${cc_command_var}${jdkDestDir}${c_reset}"
 mkdir -p "${jdkDestDir}"
 
 # Download and untar into Library.
-echo "${cc_command}curl -s${c_reset} ${cc_command_var}${jdkUrl}${c_reset} ${cc_command}| tar -xzC${c_reset} ${cc_command_var}${jdkDestDir}${c_reset}"
 curl -s "${jdkUrl}" | tar -xzC "${jdkDestDir}"
 
 # Add JAVA_HOME to .zshenv.

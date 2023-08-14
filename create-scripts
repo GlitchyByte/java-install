@@ -6,38 +6,48 @@
 set -e # Exit if any command returns an error.
 set -u # Exit with an error if a variable is used without being set.
 
-# Version.
-version="20"
-
 # Generate scripts.
 readonly scriptDescriptionTag="%SCRIPT_DESCRIPTION%"
 readonly jdkUrlTag="%JDK_URL%"
 readonly jdkNameTag="%JDK_NAME%"
-for osName in "macos" "linux"; do
-    for binName in "java" "graalvm"; do
-        case "${binName}" in
-            "java")
-                jdkName="jdk-${version}"
+readonly readme="README.md"
+# Reset README.md.
+cp "template-README.md" "${readme}"
+# Iterate over varieties.
+for version in "20" "17"; do
+    for osName in "macos" "linux"; do
+        case "${osName}" in
+            "macos")
+                shellBin="zsh"
                 ;;
-            "graalvm")
-                jdkName="graalvm-jdk-${version}"
-                ;;
-            *)
-                echo "Wrong binName: ${binName}"
-                exit 1
+            "linux")
+                shellBin="bash"
                 ;;
         esac
-        mkdir -p "${jdkName}"
-        for archName in "x64" "aarch64"; do
-            scriptName="${jdkName}/${osName}-${archName}"
-            echo "Creating: ${scriptName}"
-            description="${binName} ${osName} ${archName}"
-            url="https://download.oracle.com/${binName}/${version}/latest/${jdkName}_${osName}-${archName}_bin.tar.gz"
-            templateScript="template-${osName}-script"
-            sed -e "s|${scriptDescriptionTag}|${description}|g" \
-                -e "s|${jdkUrlTag}|${url}|g" \
-                -e "s|${jdkNameTag}|${jdkName}|g" \
-                "${templateScript}" > "${scriptName}"
+        for binName in "java" "graalvm"; do
+            case "${binName}" in
+                "java")
+                    jdkName="jdk-${version}"
+                    ;;
+                "graalvm")
+                    jdkName="graalvm-jdk-${version}"
+                    ;;
+            esac
+            mkdir -p "${jdkName}" # Make sure directory exists.
+            for archName in "aarch64" "x64"; do
+                # Replace tags with values.
+                scriptName="${jdkName}/${osName}-${archName}"
+                echo "Creating: ${scriptName}"
+                description="${binName} ${osName} ${archName}"
+                url="https://download.oracle.com/${binName}/${version}/latest/${jdkName}_${osName}-${archName}_bin.tar.gz"
+                templateScript="template-${osName}-script"
+                sed -e "s|${scriptDescriptionTag}|${description}|g" \
+                    -e "s|${jdkUrlTag}|${url}|g" \
+                    -e "s|${jdkNameTag}|${jdkName}|g" \
+                    "${templateScript}" > "${scriptName}"
+                # Add line to README.md.
+                echo "| ${osName} | ${archName} | ${binName} | ${version} | \`curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/${scriptName} \\| ${shellBin}\` |" >> ${readme}
+            done
         done
     done
 done
