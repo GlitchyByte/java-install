@@ -9,7 +9,7 @@ readonly jdkUrl="https://download.oracle.com/java/20/latest/jdk-20_linux-aarch64
 readonly jdkDestDir="${HOME}/.local/java"
 readonly envScript="${HOME}/.profile"
 readonly javaHomeSearchLine="export JAVA_HOME="
-readonly javaHomeLine="export JAVA_HOME=${jdkDestDir}/jdk-20"
+readonly javaHomeLine="export JAVA_HOME=\"${jdkDestDir}/jdk-20\" ; export PATH=\"\${JAVA_HOME}/bin:\${PATH}\""
 
 # Colors.
 readonly c_reset=$(tput sgr0)

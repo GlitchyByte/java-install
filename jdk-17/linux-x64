@@ -9,7 +9,7 @@ readonly jdkUrl="https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin
 readonly jdkDestDir="${HOME}/.local/java"
 readonly envScript="${HOME}/.profile"
 readonly javaHomeSearchLine="export JAVA_HOME="
-readonly javaHomeLine="export JAVA_HOME=${jdkDestDir}/jdk-17"
+readonly javaHomeLine="export JAVA_HOME=\"${jdkDestDir}/jdk-17\" ; export PATH=\"\${JAVA_HOME}/bin:\${PATH}\""
 
 # Colors.
 readonly c_reset=$(tput sgr0)

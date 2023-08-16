@@ -9,7 +9,7 @@ readonly jdkUrl="%JDK_URL%"
 readonly jdkDestDir="${HOME}/.local/java"
 readonly envScript="${HOME}/.profile"
 readonly javaHomeSearchLine="export JAVA_HOME="
-readonly javaHomeLine="export JAVA_HOME=${jdkDestDir}/%JDK_NAME%"
+readonly javaHomeLine="export JAVA_HOME=\"${jdkDestDir}/%JDK_NAME%\" ; export PATH=\"\${JAVA_HOME}/bin:\${PATH}\""
 
 # Colors.
 readonly c_reset=$(tput sgr0)

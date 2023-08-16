@@ -9,7 +9,7 @@ readonly jdkUrl="%JDK_URL%"
 readonly jdkDestDir="${HOME}/Library/Java/JavaVirtualMachines"
 readonly envScript="${HOME}/.zshenv"
 readonly javaHomeSearchLine="export JAVA_HOME="
-readonly javaHomeLine="export JAVA_HOME=\$(/usr/libexec/java_home)"
+readonly javaHomeLine="export JAVA_HOME=\$(/usr/libexec/java_home) ; export PATH=\"\${JAVA_HOME}/bin:\${PATH}\""
 
 # Colors.
 readonly c_reset=$(tput sgr0)
@@ -37,6 +37,11 @@ if test "${grepResult}" -eq 0; then
     echo "${javaHomeLine}" >> "${envScript}"
     echo >> "${envScript}"
     echo "${cc_message}JAVA_HOME added to '.zshenv'.${c_reset}"
+fi
+if test "${grepResult}" -eq 1; then
+    # There is one. Replace it.
+    sed -i '' "s|^${javaHomeSearchLine}.*|${javaHomeLine}|" "${envScript}"
+    echo "${cc_message}JAVA_HOME replaced in '.zshenv'.${c_reset}"
 fi
 if test "${grepResult}" -ge 2; then
     # Nah! Something is wrong.
