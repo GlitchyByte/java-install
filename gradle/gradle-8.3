@@ -5,7 +5,7 @@
 # Emphemeral Gradle install.
 set -u # Exit with an error if a variable is used without being set.
 
-readonly gradleVersion="gradle-8.2.1"
+readonly gradleVersion="gradle-8.3"
 readonly gradleUrl="https://services.gradle.org/distributions/${gradleVersion}-bin.zip"
 readonly tempDir="temp.gradle"
 mkdir "${tempDir}"
@@ -19,7 +19,7 @@ readonly cc_command="${cf_yellow}${c_bold}"
 readonly cc_message="${c_bold}${cf_white}"
 
 # Download and unzip to temp directory.
-curl -sL https://services.gradle.org/distributions/gradle-8.2.1-bin.zip | tar -xzC "${tempDir}"
+curl -sL "${gradleUrl}" | tar -xzC "${tempDir}"
 
 # Make script executable.
 readonly gradleScript="${tempDir}/${gradleVersion}/bin/gradle"
