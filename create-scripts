@@ -14,7 +14,7 @@ readonly readme="README.md"
 # Reset README.md.
 cp "template-README.md" "${readme}"
 # Iterate over varieties.
-for version in "20" "17"; do
+for version in "21" "17"; do
     for osName in "macos" "linux"; do
         case "${osName}" in
             "macos")

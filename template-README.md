@@ -13,7 +13,7 @@ I'm also including a semi-one-liner to start your project with Gradle! After all
 
 Run this in a newly created directory for your project. The script will download Gradle temporarily, and output another one-liner to initialize your app. That one-liner will also delete the temporary Gradle download. You do not need a global Gradle installation in your system, every project holds its own copy once initialized.
 
-    curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/gradle/gradle-8.2.1 | bash
+    curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/gradle/gradle-8.3 | bash
 
 ---
 ## Get Java!

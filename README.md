@@ -20,14 +20,14 @@ Run this in a newly created directory for your project. The script will download
 
 | OS | Arch | JDK | Ver | Command |
 |----|--------------|-----|---------|---------|
-| macos | aarch64 | java | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-20/macos-aarch64 \| zsh` |
-| macos | x64 | java | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-20/macos-x64 \| zsh` |
-| macos | aarch64 | graalvm | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-20/macos-aarch64 \| zsh` |
-| macos | x64 | graalvm | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-20/macos-x64 \| zsh` |
-| linux | aarch64 | java | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-20/linux-aarch64 \| bash` |
-| linux | x64 | java | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-20/linux-x64 \| bash` |
-| linux | aarch64 | graalvm | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-20/linux-aarch64 \| bash` |
-| linux | x64 | graalvm | 20 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-20/linux-x64 \| bash` |
+| macos | aarch64 | java | 21 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-21/macos-aarch64 \| zsh` |
+| macos | x64 | java | 21 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-21/macos-x64 \| zsh` |
+| macos | aarch64 | graalvm | 21 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-21/macos-aarch64 \| zsh` |
+| macos | x64 | graalvm | 21 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-21/macos-x64 \| zsh` |
+| linux | aarch64 | java | 21 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-21/linux-aarch64 \| bash` |
+| linux | x64 | java | 21 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-21/linux-x64 \| bash` |
+| linux | aarch64 | graalvm | 21 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-21/linux-aarch64 \| bash` |
+| linux | x64 | graalvm | 21 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-21/linux-x64 \| bash` |
 | macos | aarch64 | java | 17 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-17/macos-aarch64 \| zsh` |
 | macos | x64 | java | 17 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/jdk-17/macos-x64 \| zsh` |
 | macos | aarch64 | graalvm | 17 | `curl -s https://raw.githubusercontent.com/GlitchyByte/java-install/main/graalvm-jdk-17/macos-aarch64 \| zsh` |

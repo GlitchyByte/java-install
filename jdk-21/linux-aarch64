@@ -2,14 +2,14 @@
 # Copyright 2022-2023 GlitchyByte
 # SPDX-License-Identifier: MIT-0
 
-# Install graalvm linux aarch64.
+# Install java linux aarch64.
 set -u # Exit with an error if a variable is used without being set.
 
-readonly jdkUrl="https://download.oracle.com/graalvm/20/latest/graalvm-jdk-20_linux-aarch64_bin.tar.gz"
+readonly jdkUrl="https://download.oracle.com/java/21/latest/jdk-21_linux-aarch64_bin.tar.gz"
 readonly jdkDestDir="${HOME}/.local/java"
 readonly envScript="${HOME}/.profile"
 readonly javaHomeSearchLine="export JAVA_HOME="
-readonly javaHomeLine="export JAVA_HOME=\"${jdkDestDir}/graalvm-jdk-20\" ; export PATH=\"\${JAVA_HOME}/bin:\${PATH}\""
+readonly javaHomeLine="export JAVA_HOME=\"${jdkDestDir}/jdk-21\" ; export PATH=\"\${JAVA_HOME}/bin:\${PATH}\""
 
 # Colors.
 readonly c_reset=$(tput sgr0)
