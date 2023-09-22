@@ -1,6 +1,6 @@
 # Java JDK and GraalVM JDK installation
 
-![JDK](https://img.shields.io/badge/JDK-20-orange) ![JDK](https://img.shields.io/badge/JDK-17-orange) ![GraalVM JDK](https://img.shields.io/badge/GraalVM_JDK-20-orange) ![GraalVM JDK](https://img.shields.io/badge/GraalVM_JDK-17-orange)
+![JDK](https://img.shields.io/badge/JDK-21-orange) ![JDK](https://img.shields.io/badge/JDK-17-orange) ![GraalVM JDK](https://img.shields.io/badge/GraalVM_JDK-21-orange) ![GraalVM JDK](https://img.shields.io/badge/GraalVM_JDK-17-orange)
 
 The following are one-liners to install JDK or GraalVM JDK. They will download, decompress, place it in the right directory, and update your shell profile with a proper JAVA_HOME environment variable. **No root needed.**
 
