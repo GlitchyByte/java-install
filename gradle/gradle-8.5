@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Copyright 2023 GlitchyByte
+# SPDX-License-Identifier: MIT-0
+
+# Emphemeral Gradle install.
+set -u # Exit with an error if a variable is used without being set.
+
+readonly gradleVersion="gradle-8.5"
+readonly gradleUrl="https://services.gradle.org/distributions/${gradleVersion}-bin.zip"
+readonly tempDir="temp.gradle"
+mkdir "${tempDir}"
+
+# Colors.
+readonly c_reset=$(tput sgr0)
+readonly c_bold=$(tput bold)
+readonly cf_yellow=$(tput setaf 3)
+readonly cf_white=$(tput setaf 7)
+readonly cc_command="${cf_yellow}${c_bold}"
+readonly cc_message="${c_bold}${cf_white}"
+
+# Download and unzip to temp directory.
+curl -sL "${gradleUrl}" | tar -xzC "${tempDir}"
+
+# Make script executable.
+readonly gradleScript="${tempDir}/${gradleVersion}/bin/gradle"
+chmod u+x ${gradleScript}
+
+# Show Gradle init to user.
+echo "${cc_message}Run the wizard to initialize your project with the following line:${c_reset}"
+echo "${cc_command}${gradleScript} --no-daemon init && rm -dr ${tempDir}${c_reset}"
