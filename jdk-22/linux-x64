@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# Copyright 2022-2023 GlitchyByte
+# SPDX-License-Identifier: MIT-0
+
+# Install java linux x64.
+set -u # Exit with an error if a variable is used without being set.
+
+readonly jdkUrl="https://download.oracle.com/java/22/latest/jdk-22_linux-x64_bin.tar.gz"
+readonly jdkDestDir="${HOME}/.local/java"
+readonly envScript="${HOME}/.profile"
+readonly javaHomeSearchLine="export JAVA_HOME="
+readonly javaHomeLine="export JAVA_HOME=\"${jdkDestDir}/jdk-22\" ; export PATH=\"\${JAVA_HOME}/bin:\${PATH}\""
+
+# Colors.
+readonly c_reset=$(tput sgr0)
+readonly c_bold=$(tput bold)
+readonly cf_red=$(tput setaf 1)
+readonly cf_green=$(tput setaf 2)
+readonly cf_white=$(tput setaf 7)
+readonly cc_message="${c_bold}${cf_white}"
+readonly cc_success="${c_bold}${cf_green}"
+readonly cc_error="${c_bold}${cf_red}"
+
+# Create Java directory in .local.
+mkdir -p "${jdkDestDir}"
+
+# Download and untar into .local.
+curl -s "${jdkUrl}" | tar -xzC "${jdkDestDir}"
+
+# Add JAVA_HOME to .profile.
+if test ! -f "${envScript}"; then
+    touch "${envScript}"
+fi
+readonly grepResult=$(grep -e "^${javaHomeSearchLine}" "${envScript}" | wc -l)
+if test "${grepResult}" -eq 0; then
+    # Not found. Let's add it.
+    echo "${javaHomeLine}" >> "${envScript}"
+    echo >> "${envScript}"
+    echo "${cc_message}JAVA_HOME added to '.profile'.${c_reset}"
+fi
+if test "${grepResult}" -eq 1; then
+    # There is one. Replace it.
+    sed -i "s|^${javaHomeSearchLine}.*|${javaHomeLine}|" "${envScript}"
+    echo "${cc_message}JAVA_HOME replaced in '.profile'.${c_reset}"
+fi
+if test "${grepResult}" -ge 2; then
+    # Nah! Something is wrong.
+    echo "${cc_error}Error adding JAVA_HOME.${c_reset}"
+    exit 1
+fi
+
+echo "${cc_success}Make sure to close and reopen this terminal.${c_reset}"
